@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: jimenez-flight-dashboard
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn dashboard:server --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    autoDeployTrigger: commit
